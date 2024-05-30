@@ -69,9 +69,7 @@ namespace WonderRabbitProject {
       const_iterator_t cbegin() const { return name_to_code_table.cbegin(); }
       const_iterator_t cend() const { return name_to_code_table.cend(); }
 
-      std::map<std::string, const int> data_sorted_by_name() const {
-        return {cbegin(), cend()};
-      }
+      std::map<std::string, const int> data_sorted_by_name() const { return {cbegin(), cend()}; }
 
       std::vector<std::pair<uint16_t, std::string>> data_sorted_by_code() const {
         using return_element_t = std::pair<uint16_t, std::string>;

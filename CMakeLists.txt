@@ -51,6 +51,9 @@ message(DEBUG "patches_for_package_project ${patches_for_package_project}")
 # PATCH_COMMAND_FOR_CPM)
 #
 # message(DEBUG "Patch command: ${PATCH_COMMAND_FOR_CPM}")
+
+CPMAddPackage("gh:TheLartians/Format.cmake@1.7.3")
+
 CPMAddPackage(
   NAME PackageProject
   VERSION 1.11.2
@@ -67,12 +70,9 @@ CPMAddPackage(
 
 # Note: globbing sources is considered bad practice as CMake's generators may not detect new files
 # automatically. Keep that in mind when changing files, or explicitly mention them here.
-# file(GLOB_RECURSE headers CONFIGURE_DEPENDS
-#   "${CMAKE_CURRENT_SOURCE_DIR}/include/*.hpp"
-#   "${CMAKE_CURRENT_SOURCE_DIR}/include/*.hxx")
-# file(GLOB_RECURSE sources CONFIGURE_DEPENDS
-#   "${CMAKE_CURRENT_SOURCE_DIR}/source/*.cpp"
-#   "${CMAKE_CURRENT_SOURCE_DIR}/source/*.cxx")
+# file(GLOB_RECURSE headers CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/include/*.hpp"
+# "${CMAKE_CURRENT_SOURCE_DIR}/include/*.hxx") file(GLOB_RECURSE sources CONFIGURE_DEPENDS
+# "${CMAKE_CURRENT_SOURCE_DIR}/source/*.cpp" "${CMAKE_CURRENT_SOURCE_DIR}/source/*.cxx")
 
 # ---- Create library ----
 
@@ -81,27 +81,23 @@ CPMAddPackage(
 add_library(${PROJECT_NAME} INTERFACE)
 set_target_properties(${PROJECT_NAME} PROPERTIES CXX_STANDARD 20)
 
-# Link dependencies
-# if(${IS_BOOST_LOCAL})
-#   target_link_libraries(${PROJECT_NAME} PUBLIC Boost::boost)
-# else()
-#   foreach(a_lib ${BOOST_HEADER_ONLY_COMPONENTS_THAT_YOU_NEED})
-#     target_link_libraries(${PROJECT_NAME} PUBLIC boost_${a_lib})
-#   endforeach()
-# endif()
+# Link dependencies if(${IS_BOOST_LOCAL}) target_link_libraries(${PROJECT_NAME} PUBLIC Boost::boost)
+# else() foreach(a_lib ${BOOST_HEADER_ONLY_COMPONENTS_THAT_YOU_NEED})
+# target_link_libraries(${PROJECT_NAME} PUBLIC boost_${a_lib}) endforeach() endif()
 #
 # foreach(a_lib ${BOOST_NOT_HEADER_ONLY_COMPONENTS_THAT_YOU_NEED})
-#   target_link_libraries(${PROJECT_NAME} PUBLIC Boost::${a_lib})
-# endforeach()
+# target_link_libraries(${PROJECT_NAME} PUBLIC Boost::${a_lib}) endforeach()
 
 target_include_directories(
   ${PROJECT_NAME} INTERFACE $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
-                         $<INSTALL_INTERFACE:include/${PROJECT_NAME}-${PROJECT_VERSION}>
+                            $<INSTALL_INTERFACE:include/${PROJECT_NAME}-${PROJECT_VERSION}>
 )
 
 # being a cross-platform target, we enforce standards conformance on MSVC
 if(${${PROJECT_NAME}_BUILD_HEADERS_ONLY})
-  target_compile_options(${PROJECT_NAME} INTERFACE "$<$<COMPILE_LANG_AND_ID:CXX,MSVC>:/permissive->")
+  target_compile_options(
+    ${PROJECT_NAME} INTERFACE "$<$<COMPILE_LANG_AND_ID:CXX,MSVC>:/permissive->"
+  )
 else()
   target_compile_options(${PROJECT_NAME} PUBLIC "$<$<COMPILE_LANG_AND_ID:CXX,MSVC>:/permissive->")
 endif()
@@ -149,5 +145,5 @@ packageProject(
   INCLUDE_DESTINATION include/${PROJECT_NAME}
   VERSION_HEADER "${VERSION_HEADER_LOCATION}"
   COMPATIBILITY "AnyNewerVersion" DISABLE_VERSION_SUFFIX ON
-  # DEPENDENCIES "Boost 1.84.0"
+  # DEPENDENCIES "Boost 1.85.0"
 )
