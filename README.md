@@ -34,11 +34,11 @@ You should be set appropriately for your environment.
 
 ## Example
 
-[example1/source/key.cxx](example1/key.cxx)
+[example1/source/key.cxx](example1/source/key.cxx)
 
 see folder example1/
 
-[example2/source/writer.cxx](example2/writer.cxx)
+[example2/source/writer.cxx](example2/source/writer.cxx)
 
 see folder example2/
 
