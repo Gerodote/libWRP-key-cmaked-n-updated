@@ -15,7 +15,7 @@ include(../cmake/getCPM.cmake)
 #   VERSION 3.2.0
 #   OPTIONS "CXXOPTS_BUILD_EXAMPLES NO" "CXXOPTS_BUILD_TESTS NO" "CXXOPTS_ENABLE_INSTALL YES"
 # )
-include(../cmake/packages/addfmt.cmake)
+# include(../cmake/packages/addfmt.cmake)
 
 CPMAddPackage(NAME libWRPkeycmakednupdated SOURCE_DIR ${CMAKE_CURRENT_LIST_DIR}/..)
 
@@ -26,8 +26,7 @@ file(GLOB sources CONFIGURE_DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/source/*.cpp
 
 add_executable(${PROJECT_NAME} ${sources})
 
-set_target_properties(${PROJECT_NAME} PROPERTIES CXX_STANDARD 20 OUTPUT_NAME
-  "${PROJECT_NAME}")
+set_target_properties(${PROJECT_NAME} PROPERTIES CXX_STANDARD 20 OUTPUT_NAME "${PROJECT_NAME}")
 
 target_link_libraries(${PROJECT_NAME} libWRPkeycmakednupdated::libWRPkeycmakednupdated)
 # target_link_libraries(${PROJECT_NAME} cxxopts)
