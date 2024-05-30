@@ -44,11 +44,11 @@ see folder example2/
 
 GNU/Linux: * need root *
 
-    sudo ./build/example2/writer
+    sudo ./build/libWRPkeycmakednupdatedexample2/writer
 
 OSX or Windows:
 
-    ./build/example2/writer
+    ./build/libWRPkeycmakednupdatedexample2/writer
 
 ### Note for Windows
 
