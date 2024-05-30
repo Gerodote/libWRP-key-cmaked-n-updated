@@ -73,8 +73,8 @@ namespace WonderRabbitProject {
         return {cbegin(), cend()};
       }
 
-      std::vector<std::pair<int, std::string>> data_sorted_by_code() const {
-        using return_element_t = std::pair<int, std::string>;
+      std::vector<std::pair<uint16_t, std::string>> data_sorted_by_code() const {
+        using return_element_t = std::pair<uint16_t, std::string>;
         using return_t = std::vector<return_element_t>;
 
         auto by_name = data_sorted_by_name();

@@ -26,7 +26,7 @@ file(GLOB sources CONFIGURE_DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/source/*.cpp
 
 add_executable(${PROJECT_NAME} ${sources})
 
-set_target_properties(${PROJECT_NAME} PROPERTIES CXX_STANDARD 20 OUTPUT_NAME "libWRPkeycmakednupdated")
+set_target_properties(${PROJECT_NAME} PROPERTIES CXX_STANDARD 20 OUTPUT_NAME "${PROJECT_NAME}")
 
 target_link_libraries(${PROJECT_NAME} libWRPkeycmakednupdated::libWRPkeycmakednupdated)
 # target_link_libraries(${PROJECT_NAME} cxxopts)
