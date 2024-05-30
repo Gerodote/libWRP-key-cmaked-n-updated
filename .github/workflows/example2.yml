@@ -1,4 +1,4 @@
-name: Standalone
+name: Example2
 
 on:
   push:
@@ -32,4 +32,4 @@ jobs:
         run: cmake --build build -j4
 
       - name: run
-        run: ./build/libWRPkeycmakednupdatedExample1
+        run: ./build/libWRPkeycmakednupdatedExample2

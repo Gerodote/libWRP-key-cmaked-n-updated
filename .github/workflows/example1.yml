@@ -1,4 +1,4 @@
-name: Standalone
+name: Example1
 
 on:
   push:
