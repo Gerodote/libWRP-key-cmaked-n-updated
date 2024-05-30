@@ -30,6 +30,7 @@ jobs:
 
       - name: build
         run: cmake --build build -j4
-
-      - name: run
-        run: ./build/libWRPkeycmakednupdatedExample2
+      
+      # disabled run since on linux it needs root to access /dev/uinput
+      # - name: run
+      #   run: ./build/libWRPkeycmakednupdatedExample2
