@@ -19,12 +19,14 @@ The library is in the "./include" directory.
 #### for GNU/Linux or OSX
 
 to system: install to /usr/local
-
-    sudo ./install.sh
+    
+    cmake -S ./all -B ./build -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS='-march=native -pipe' -DlibWRPkeycmakednupdated_ENABLE_LTO=ON -DlibWRPkeycmakednupdated_ENABLE_POLY=ON
+    cmake --build ./build --parallel $(nproc) --verbose
+    sudo cmake --install ./build/ --prefix=/
 
 to the other:
 
-    PREFIX=~/opt ./install.sh
+    sudo cmake --install ./build/ --prefix=~/
 
 #### Windows
 
@@ -32,37 +34,33 @@ You should be set appropriately for your environment.
 
 ## Example
 
-[example/key.cxx](example/key.cxx)
+[example1/sourcekey.cxx](example1/key.cxx)
 
-    cd example
-    mkdir build
-    cd build
-    cmake -G Ninja ..
-    ninja
-    ./key
+see folder example1/
 
-[example/writer.cxx](example/writer.cxx)
+[example2/writer.cxx](example2/writer.cxx)
+
+see folder example2/
 
 GNU/Linux: * need root *
 
-    sudo ./writer
+    sudo ./build/example2/writer
 
 OSX or Windows:
 
-    ./writer
+    ./build/example2/writer
 
 ### Note for Windows
 
-you must need copy or symlink two .dll files from your development environment lib directory, maybe:
+You might need copy or symlink two .dll files from your development environment lib directory, but that's not sure:
 
 1. libgcc_s_sjlj-1.dll
 2. libstdc++-6.dll
 
 ## Requirement
 
-* C++11
-    * g++ >= 4.6 (Recommend >= 4.7)
-    * clang++ >= 3.3
+* a c++ compiler ( for windows install or gcc or clang or visual studio with c++ parts . For mac maybe install xcode with c++ parts, idk. For linux install or gcc or clang or w/e)
+* cmake 
 
 ## Licence
 
