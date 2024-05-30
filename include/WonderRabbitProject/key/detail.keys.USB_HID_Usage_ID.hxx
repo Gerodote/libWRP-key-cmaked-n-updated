@@ -1,5 +1,7 @@
 #pragma once
 
+#include "WonderRabbitProject/key/detail.keys.hxx"
+
 keys_element_t keys[] =
 { std::make_tuple("none", -1)
 , std::make_tuple("escape", 41)
