@@ -52,7 +52,6 @@ message(DEBUG "patches_for_package_project ${patches_for_package_project}")
 #
 # message(DEBUG "Patch command: ${PATCH_COMMAND_FOR_CPM}")
 
-CPMAddPackage("gh:TheLartians/Format.cmake@1.7.3")
 
 CPMAddPackage(
   NAME PackageProject
